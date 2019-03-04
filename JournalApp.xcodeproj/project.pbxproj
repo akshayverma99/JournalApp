@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380E7D588072AEC1F4048360 /* Pods_JournalApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC7055DAC807D3C5B29B661 /* Pods_JournalApp.framework */; };
 		4F9C59C6222DD1F200B3ADA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59C5222DD1F200B3ADA2 /* AppDelegate.swift */; };
-		4F9C59C8222DD1F200B3ADA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59C7222DD1F200B3ADA2 /* ViewController.swift */; };
 		4F9C59CB222DD1F200B3ADA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C59C9222DD1F200B3ADA2 /* Main.storyboard */; };
 		4F9C59CE222DD1F200B3ADA2 /* JournalApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59CC222DD1F200B3ADA2 /* JournalApp.xcdatamodeld */; };
 		4F9C59D0222DD1F400B3ADA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C59CF222DD1F400B3ADA2 /* Assets.xcassets */; };
 		4F9C59D3222DD1F400B3ADA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C59D1222DD1F400B3ADA2 /* LaunchScreen.storyboard */; };
+		4F9C59DB222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */; };
+		4F9C59DD222DDE4E00B3ADA2 /* JournalEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DC7055DAC807D3C5B29B661 /* Pods_JournalApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JournalApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31D20E4ABE68E134236D2E3D /* Pods-JournalApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JournalApp.release.xcconfig"; path = "Target Support Files/Pods-JournalApp/Pods-JournalApp.release.xcconfig"; sourceTree = "<group>"; };
 		4F9C59C2222DD1F200B3ADA2 /* JournalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JournalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9C59C5222DD1F200B3ADA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F9C59C7222DD1F200B3ADA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4F9C59CA222DD1F200B3ADA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F9C59CD222DD1F200B3ADA2 /* JournalApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JournalApp.xcdatamodel; sourceTree = "<group>"; };
 		4F9C59CF222DD1F400B3ADA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F9C59D2222DD1F400B3ADA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F9C59D4222DD1F400B3ADA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryTableViewController.swift; sourceTree = "<group>"; };
+		4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryManager.swift; sourceTree = "<group>"; };
+		CFA2359D842C9847BBE1B49B /* Pods-JournalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JournalApp.debug.xcconfig"; path = "Target Support Files/Pods-JournalApp/Pods-JournalApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380E7D588072AEC1F4048360 /* Pods_JournalApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19BB46C60E1B76EBD3B0CE66 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CFA2359D842C9847BBE1B49B /* Pods-JournalApp.debug.xcconfig */,
+				31D20E4ABE68E134236D2E3D /* Pods-JournalApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4F9C59B9222DD1F200B3ADA2 = {
 			isa = PBXGroup;
 			children = (
 				4F9C59C4222DD1F200B3ADA2 /* JournalApp */,
 				4F9C59C3222DD1F200B3ADA2 /* Products */,
+				19BB46C60E1B76EBD3B0CE66 /* Pods */,
+				5880175F092FD47A5EC1734E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,7 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				4F9C59C5222DD1F200B3ADA2 /* AppDelegate.swift */,
-				4F9C59C7222DD1F200B3ADA2 /* ViewController.swift */,
+				4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */,
+				4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */,
 				4F9C59C9222DD1F200B3ADA2 /* Main.storyboard */,
 				4F9C59CF222DD1F400B3ADA2 /* Assets.xcassets */,
 				4F9C59D1222DD1F400B3ADA2 /* LaunchScreen.storyboard */,
@@ -67,6 +87,14 @@
 			path = JournalApp;
 			sourceTree = "<group>";
 		};
+		5880175F092FD47A5EC1734E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DC7055DAC807D3C5B29B661 /* Pods_JournalApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F9C59D7222DD1F400B3ADA2 /* Build configuration list for PBXNativeTarget "JournalApp" */;
 			buildPhases = (
+				AC3C39CDE8681324B819F190 /* [CP] Check Pods Manifest.lock */,
 				4F9C59BE222DD1F200B3ADA2 /* Sources */,
 				4F9C59BF222DD1F200B3ADA2 /* Frameworks */,
 				4F9C59C0222DD1F200B3ADA2 /* Resources */,
+				7F5DEF7519331BD1D112D46B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,12 +163,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7F5DEF7519331BD1D112D46B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JournalApp/Pods-JournalApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JournalApp/Pods-JournalApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC3C39CDE8681324B819F190 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JournalApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4F9C59BE222DD1F200B3ADA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F9C59C8222DD1F200B3ADA2 /* ViewController.swift in Sources */,
+				4F9C59DD222DDE4E00B3ADA2 /* JournalEntryManager.swift in Sources */,
+				4F9C59DB222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift in Sources */,
 				4F9C59C6222DD1F200B3ADA2 /* AppDelegate.swift in Sources */,
 				4F9C59CE222DD1F200B3ADA2 /* JournalApp.xcdatamodeld in Sources */,
 			);
@@ -282,6 +360,7 @@
 		};
 		4F9C59D8222DD1F400B3ADA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFA2359D842C9847BBE1B49B /* Pods-JournalApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +379,7 @@
 		};
 		4F9C59D9222DD1F400B3ADA2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31D20E4ABE68E134236D2E3D /* Pods-JournalApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

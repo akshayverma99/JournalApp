@@ -11,6 +11,7 @@ import Foundation
 struct JournalEntry {
     let date: Date
     var text: String
+    var location: String?
 }
 
 class JournalEntryManager{

@@ -16,6 +16,9 @@
 		4F9C59DB222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */; };
 		4F9C59DD222DDE4E00B3ADA2 /* JournalEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */; };
 		4F9C59DF222DEEBE00B3ADA2 /* NewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59DE222DEEBE00B3ADA2 /* NewEntryViewController.swift */; };
+		4F9C59E2222E164A00B3ADA2 /* JournalEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59E1222E164A00B3ADA2 /* JournalEntryTableViewCell.swift */; };
+		4F9C59E4222E182600B3ADA2 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59E3222E182600B3ADA2 /* DateManager.swift */; };
+		4F9C59E8222EEBF000B3ADA2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59E7222EEBF000B3ADA2 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryTableViewController.swift; sourceTree = "<group>"; };
 		4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryManager.swift; sourceTree = "<group>"; };
 		4F9C59DE222DEEBE00B3ADA2 /* NewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewController.swift; sourceTree = "<group>"; };
+		4F9C59E1222E164A00B3ADA2 /* JournalEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryTableViewCell.swift; sourceTree = "<group>"; };
+		4F9C59E3222E182600B3ADA2 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		4F9C59E7222EEBF000B3ADA2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		CFA2359D842C9847BBE1B49B /* Pods-JournalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JournalApp.debug.xcconfig"; path = "Target Support Files/Pods-JournalApp/Pods-JournalApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +84,8 @@
 			children = (
 				4F9C59C5222DD1F200B3ADA2 /* AppDelegate.swift */,
 				4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */,
+				4F9C59E3222E182600B3ADA2 /* DateManager.swift */,
+				4F9C59E7222EEBF000B3ADA2 /* LocationManager.swift */,
 				4F9C59E0222DEEC100B3ADA2 /* ViewControllers */,
 				4F9C59C9222DD1F200B3ADA2 /* Main.storyboard */,
 				4F9C59CF222DD1F400B3ADA2 /* Assets.xcassets */,
@@ -91,8 +99,9 @@
 		4F9C59E0222DEEC100B3ADA2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */,
 				4F9C59DE222DEEBE00B3ADA2 /* NewEntryViewController.swift */,
+				4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */,
+				4F9C59E1222E164A00B3ADA2 /* JournalEntryTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -219,10 +228,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9C59E4222E182600B3ADA2 /* DateManager.swift in Sources */,
 				4F9C59DF222DEEBE00B3ADA2 /* NewEntryViewController.swift in Sources */,
 				4F9C59DD222DDE4E00B3ADA2 /* JournalEntryManager.swift in Sources */,
 				4F9C59DB222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift in Sources */,
+				4F9C59E8222EEBF000B3ADA2 /* LocationManager.swift in Sources */,
 				4F9C59C6222DD1F200B3ADA2 /* AppDelegate.swift in Sources */,
+				4F9C59E2222E164A00B3ADA2 /* JournalEntryTableViewCell.swift in Sources */,
 				4F9C59CE222DD1F200B3ADA2 /* JournalApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

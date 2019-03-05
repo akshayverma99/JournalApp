@@ -35,15 +35,32 @@ class JournalEntryTableViewController: UITableViewController {
         return JournalEntryManager.getJournalEntries().count
     }
 
-    /*
+  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "entry", for: indexPath) as! JournalEntryTableViewCell
 
         // Configure the cell...
-
+        
+        cell.dateLabel.text = DateManager().formatDateIntoString(JournalEntryManager.getJournalEntries()[indexPath.row].date)
+        cell.journalEntryText?.text = JournalEntryManager.getJournalEntries()[indexPath.row].text
+        if let location = JournalEntryManager.getJournalEntries()[indexPath.row].location{
+            cell.LocationLabel.isHidden = false
+            cell.LocationLabel.text = location
+        }else{
+            cell.LocationLabel.isHidden = true
+        }
+        
         return cell
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newEntry"{
+            if let newVC = segue.destination as? NewEntryViewController{
+                newVC.previousView = self
+            }
+        }
+    }
+ 
 
     /*
     // Override to support conditional editing of the table view.

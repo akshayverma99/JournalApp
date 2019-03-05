@@ -7,5 +7,6 @@ target 'JournalApp' do
 
   # Pods for JournalApp
     pod 'IQKeyboardManagerSwift'
+	pod 'UITextView+Placeholder'
 
 end

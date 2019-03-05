@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class NewEntryViewController: UIViewController {
 
     @IBOutlet weak var dateLabel: UILabel!

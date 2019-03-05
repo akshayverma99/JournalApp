@@ -15,6 +15,7 @@
 		4F9C59D3222DD1F400B3ADA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C59D1222DD1F400B3ADA2 /* LaunchScreen.storyboard */; };
 		4F9C59DB222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */; };
 		4F9C59DD222DDE4E00B3ADA2 /* JournalEntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */; };
+		4F9C59DF222DEEBE00B3ADA2 /* NewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C59DE222DEEBE00B3ADA2 /* NewEntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		4F9C59D4222DD1F400B3ADA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryTableViewController.swift; sourceTree = "<group>"; };
 		4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryManager.swift; sourceTree = "<group>"; };
+		4F9C59DE222DEEBE00B3ADA2 /* NewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewController.swift; sourceTree = "<group>"; };
 		CFA2359D842C9847BBE1B49B /* Pods-JournalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JournalApp.debug.xcconfig"; path = "Target Support Files/Pods-JournalApp/Pods-JournalApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,7 +52,6 @@
 				CFA2359D842C9847BBE1B49B /* Pods-JournalApp.debug.xcconfig */,
 				31D20E4ABE68E134236D2E3D /* Pods-JournalApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -76,8 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				4F9C59C5222DD1F200B3ADA2 /* AppDelegate.swift */,
-				4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */,
 				4F9C59DC222DDE4E00B3ADA2 /* JournalEntryManager.swift */,
+				4F9C59E0222DEEC100B3ADA2 /* ViewControllers */,
 				4F9C59C9222DD1F200B3ADA2 /* Main.storyboard */,
 				4F9C59CF222DD1F400B3ADA2 /* Assets.xcassets */,
 				4F9C59D1222DD1F400B3ADA2 /* LaunchScreen.storyboard */,
@@ -85,6 +86,15 @@
 				4F9C59CC222DD1F200B3ADA2 /* JournalApp.xcdatamodeld */,
 			);
 			path = JournalApp;
+			sourceTree = "<group>";
+		};
+		4F9C59E0222DEEC100B3ADA2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F9C59DA222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift */,
+				4F9C59DE222DEEBE00B3ADA2 /* NewEntryViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		5880175F092FD47A5EC1734E /* Frameworks */ = {
@@ -169,15 +179,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JournalApp/Pods-JournalApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 			);
@@ -191,15 +197,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JournalApp-checkManifestLockResult.txt",
 			);
@@ -215,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9C59DF222DEEBE00B3ADA2 /* NewEntryViewController.swift in Sources */,
 				4F9C59DD222DDE4E00B3ADA2 /* JournalEntryManager.swift in Sources */,
 				4F9C59DB222DD8CD00B3ADA2 /* JournalEntryTableViewController.swift in Sources */,
 				4F9C59C6222DD1F200B3ADA2 /* AppDelegate.swift in Sources */,

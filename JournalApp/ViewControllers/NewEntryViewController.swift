@@ -49,7 +49,6 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
         
         if let index = index{
             let currentEntry = JournalEntryManager.getJournalEntries()[index]
-            currentDate = currentEntry.date
             dateLabel.text = DateManager().formatDateIntoString(currentEntry.date)
             textField.text = currentEntry.text
             

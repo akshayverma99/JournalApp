@@ -19,7 +19,7 @@ enum coreDataError: Error{
     case retrievalError
 }
 
-class JournalEntryManager{
+public class JournalEntryManager{
     
     private enum entryAttributeKey: String{
         case dateCreated

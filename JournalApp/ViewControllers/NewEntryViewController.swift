@@ -44,6 +44,9 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateForEditing(){
+        
+        self.title = "Edit Entry"
+        
         if let index = index{
             let currentEntry = JournalEntryManager.getJournalEntries()[index]
             currentDate = currentEntry.date

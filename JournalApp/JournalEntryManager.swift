@@ -28,10 +28,24 @@ class JournalEntryManager{
     }
     
     private static var journalEntries: [JournalEntry] = []
-    
+    private static var journalEntryObjects: [NSManagedObject] = []
    
     static func addJournalEntry(_ entry: JournalEntry){
         saveJournalEntry(for: entry)
+    }
+    
+    static func removeJournalEntry(at index: Int){
+        journalEntries.remove(at: index)
+        let entry = journalEntryObjects[index]
+        journalEntryObjects.remove(at: index)
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        managedContext.delete(entry)
+        do{
+           try managedContext.save()
+        }catch{}
     }
     
     static func updateJournalEntries(){
@@ -44,6 +58,7 @@ class JournalEntryManager{
         
         do{
             let arrayOfObjects = try managedContext.fetch(fetchRequest)
+            journalEntryObjects = arrayOfObjects
             for managedObject in arrayOfObjects{
                 let newEntry = try createJournalEntry(from: managedObject)
                 journalEntries.append(newEntry)

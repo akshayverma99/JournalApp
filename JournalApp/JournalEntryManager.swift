@@ -27,11 +27,18 @@ class JournalEntryManager{
         case text
     }
     
+    // Both hold the same information, the above is used to interface, the bottom is used for modification
     private static var journalEntries: [JournalEntry] = []
     private static var journalEntryObjects: [NSManagedObject] = []
    
     static func addJournalEntry(_ entry: JournalEntry){
         saveJournalEntry(for: entry)
+    }
+    
+    static func updateJournalEntry(at index: Int, with entry: JournalEntry){
+        journalEntries[index] = entry
+        removeJournalEntry(at: index)
+        addJournalEntry(entry)
     }
     
     static func removeJournalEntry(at index: Int){
@@ -54,7 +61,9 @@ class JournalEntryManager{
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Entry")
-        fetchRequest.sortDescriptors?.append(NSSortDescriptor(key: entryAttributeKey.dateCreated.rawValue, ascending: true))
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: entryAttributeKey.dateCreated.rawValue, ascending: false)]
+        
+        journalEntries = []
         
         do{
             let arrayOfObjects = try managedContext.fetch(fetchRequest)
@@ -98,6 +107,7 @@ class JournalEntryManager{
         do{
             try managedContext.save()
             JournalEntryManager.journalEntries.append(journalEntry)
+            JournalEntryManager.journalEntryObjects.append(entry)
         }catch let error{
             print(error.localizedDescription)
         }

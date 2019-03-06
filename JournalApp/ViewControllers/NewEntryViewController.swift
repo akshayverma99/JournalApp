@@ -19,6 +19,17 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationString: String?
     
+    var currentDate = Date()
+    
+    private var editingModeEnabled = false
+    var index: Int?{
+        didSet{
+            if index != nil{
+                editingModeEnabled = true
+            }
+        }
+    }
+    
     var previousView: JournalEntryTableViewController!
     
     override func viewDidLoad() {
@@ -26,6 +37,26 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
         setupSaveButton()
         updateDateLabel()
         
+        if editingModeEnabled{
+            updateForEditing()
+        }
+        
+    }
+    
+    func updateForEditing(){
+        if let index = index{
+            let currentEntry = JournalEntryManager.getJournalEntries()[index]
+            currentDate = currentEntry.date
+            dateLabel.text = DateManager().formatDateIntoString(currentEntry.date)
+            textField.text = currentEntry.text
+            
+            if let location = currentEntry.location{
+                locationLabel.isEnabled = false
+                locationLabel.setTitle(location, for: .disabled)
+            }else{
+                locationLabel.isHidden = true
+            }
+        }
     }
 
     func setupSaveButton(){
@@ -33,7 +64,6 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateDateLabel(){
-        let currentDate = Date()
         let dateFormatter = DateManager()
         dateLabel.text = dateFormatter.formatDateIntoString(currentDate)
         
@@ -75,14 +105,16 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
-    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         if !textField.text.isEmpty{
-            let newEntry = JournalEntry(date: Date(timeIntervalSinceNow: 0), text: textField.text, location: locationString)
-            JournalEntryManager.addJournalEntry(newEntry)
+            let newEntry = JournalEntry(date: currentDate, text: textField.text, location: locationString)
+            if editingModeEnabled{
+                JournalEntryManager.updateJournalEntry(at: index!, with: newEntry)
+            }else{
+                JournalEntryManager.addJournalEntry(newEntry)
+            }
             LocationManager.shared.stopUpdatingLocation()
             previousView.tableView.reloadData()
             navigationController?.popViewController(animated: true)

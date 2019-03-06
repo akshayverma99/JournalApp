@@ -32,6 +32,7 @@ class JournalEntryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        JournalEntryManager.updateJournalEntries()
         return JournalEntryManager.getJournalEntries().count
     }
 
@@ -58,6 +59,12 @@ class JournalEntryTableViewController: UITableViewController {
             if let newVC = segue.destination as? NewEntryViewController{
                 newVC.previousView = self
             }
+        }else if segue.identifier == "edit"{
+            if let newVC = segue.destination as? NewEntryViewController, let cell = sender as? JournalEntryTableViewCell,
+                let index = tableView.indexPath(for: cell){
+                newVC.index = index.row
+                newVC.previousView = self
+            }
         }
     }
  
@@ -65,7 +72,6 @@ class JournalEntryTableViewController: UITableViewController {
 
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
 
@@ -74,7 +80,6 @@ class JournalEntryTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-
             JournalEntryManager.removeJournalEntry(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } 

@@ -15,7 +15,7 @@
         <scene sceneID="eZ7-UE-wuj">
             <objects>
                 <tableViewController id="vcg-nl-zBX" customClass="JournalEntryTableViewController" customModule="JournalApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="65" sectionFooterHeight="28" id="KKb-NF-m61">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="65" sectionFooterHeight="28" id="KKb-NF-m61">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,6 +88,7 @@
                                     <outlet property="LocationLabel" destination="tGo-rg-wfX" id="JfY-SQ-tRD"/>
                                     <outlet property="dateLabel" destination="lBP-m8-FPJ" id="SSP-ql-qUT"/>
                                     <outlet property="journalEntryText" destination="Upy-OX-djn" id="mGi-jz-FbC"/>
+                                    <segue destination="XlA-je-94r" kind="show" identifier="edit" id="PBG-Rj-xgl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -200,4 +201,7 @@
             <point key="canvasLocation" x="-55" y="171"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="PBG-Rj-xgl"/>
+    </inferredMetricsTieBreakers>
 </document>

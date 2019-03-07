@@ -19,12 +19,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Drm-IL-2VN">
+                        <color key="separatorColor" red="0.0" green="0.78823529411764703" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.066666666666666666" green="0.6588235294117647" blue="0.55686274509803924" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Drm-IL-2VN">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNa-Vj-ZMV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                     <color key="backgroundColor" red="0.28195880565777781" green="0.74900684228888881" blue="0.43994491678055553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="Tap to create a new entry +">

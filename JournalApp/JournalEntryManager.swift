@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// Journal Entry Format
 struct JournalEntry {
     let date: Date
     var text: String
@@ -19,8 +20,11 @@ enum coreDataError: Error{
     case retrievalError
 }
 
+
+/// Interface between the rest of the application and core data
 public class JournalEntryManager{
     
+    // Used to avoid typing strings
     private enum entryAttributeKey: String{
         case dateCreated
         case location
@@ -31,17 +35,20 @@ public class JournalEntryManager{
     private static var journalEntries: [JournalEntry] = []
     private static var journalEntryObjects: [NSManagedObject] = []
     
+    /// Interface for adding/saving a journal entry
     static func addJournalEntry(_ entry: JournalEntry)throws{
         try saveJournalEntry(for: entry)
     }
     
+    /// Updates a journal entry at a given index and replaces it with a new one
     static func updateJournalEntry(at index: Int, with entry: JournalEntry)throws{
         journalEntries[index] = entry
-        removeJournalEntry(at: index)
+        try removeJournalEntry(at: index)
         try addJournalEntry(entry)
     }
     
-    static func removeJournalEntry(at index: Int){
+    /// Removes a journal from memory at an index
+    static func removeJournalEntry(at index: Int) throws{
         journalEntries.remove(at: index)
         let entry = journalEntryObjects[index]
         journalEntryObjects.remove(at: index)
@@ -50,11 +57,11 @@ public class JournalEntryManager{
         let managedContext = appDelegate.persistentContainer.viewContext
         
         managedContext.delete(entry)
-        do{
-            try managedContext.save()
-        }catch{}
+        try managedContext.save()
     }
     
+    // Populates the JournalEntries(private) and journalEntryObjects arrays(private)
+    /// Updates this class with the current information from disk
     static func updateJournalEntries(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
@@ -76,13 +83,14 @@ public class JournalEntryManager{
             journalEntries = []
             journalEntryObjects = []
         }
-        
     }
     
+    /// Returns all the journal entries
     static func getJournalEntries() -> [JournalEntry]{
         return JournalEntryManager.journalEntries
     }
     
+    /// Converts from a NSObject to a much easier to use format, JournalEntry
     private static func createJournalEntry(from object: NSManagedObject) throws -> JournalEntry{
         if let date = object.value(forKey: entryAttributeKey.dateCreated.rawValue) as? Date,
             let text = object.value(forKey: entryAttributeKey.text.rawValue) as? String{
@@ -92,10 +100,9 @@ public class JournalEntryManager{
         }else{
             throw coreDataError.retrievalError
         }
-        
-        
     }
     
+    /// Saves a journal entry on disk
     private static func saveJournalEntry(for journalEntry: JournalEntry) throws {
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
@@ -107,12 +114,15 @@ public class JournalEntryManager{
         
         
         try managedContext.save()
+        
+        // Added to the internal arrays so that we don't have to get the information from disk
         JournalEntryManager.journalEntries.append(journalEntry)
         JournalEntryManager.journalEntryObjects.append(entry)
         
         
     }
     
+    /// pass in an entry and the information to populate it with
     private static func setEntryAttributes(for entry: NSManagedObject, date: Date, text: String, location: String?){
         entry.setValue(date, forKey: entryAttributeKey.dateCreated.rawValue)
         entry.setValue(text, forKey: entryAttributeKey.text.rawValue)

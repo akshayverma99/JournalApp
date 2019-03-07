@@ -10,35 +10,26 @@ import UIKit
 
 class JournalEntryTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         JournalEntryManager.updateJournalEntries()
         return JournalEntryManager.getJournalEntries().count
     }
 
-  
+    // Creates the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "entry", for: indexPath) as! JournalEntryTableViewCell
-
-        // Configure the cell...
         
+        // Populating Cell info
         cell.dateLabel.text = DateManager().formatDateIntoString(JournalEntryManager.getJournalEntries()[indexPath.row].date)
         cell.journalEntryText?.text = JournalEntryManager.getJournalEntries()[indexPath.row].text
+        
+        // If there is a location, it is displayed, otherwise it is hidden
         if let location = JournalEntryManager.getJournalEntries()[indexPath.row].location{
             cell.LocationLabel.isHidden = false
             cell.LocationLabel.text = location
@@ -49,6 +40,9 @@ class JournalEntryTableViewController: UITableViewController {
         return cell
     }
     
+    
+    // Lets the editing view controller (NewEntryViewController) know if
+    // it is editing an entry or creating a new one
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newEntry"{
             if let newVC = segue.destination as? NewEntryViewController{
@@ -63,22 +57,35 @@ class JournalEntryTableViewController: UITableViewController {
         }
     }
  
-
-
+    // MARK: TableView Editing
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-
-
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            JournalEntryManager.removeJournalEntry(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            do{
+                try JournalEntryManager.removeJournalEntry(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }catch{
+                presentUnableToDeleteModal()
+            }
+
         } 
     }
+    
+    /// Lets the user know that his entry was not deleted
+    func presentUnableToDeleteModal(){
+        let modalView = UIAlertController(title: "Delete Failed", message: "Unable to delete your entry, please retry", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        modalView.addAction(okButton)
+        present(modalView, animated: true, completion: nil)
+    }
+    
+    
 
 
 }

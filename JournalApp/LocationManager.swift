@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 
+/// Can use a central CLLocationManager instead of creating a new one everytime
 class LocationManager{
     static let shared: CLLocationManager = {
         let placeHolder = CLLocationManager()

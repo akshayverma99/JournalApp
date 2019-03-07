@@ -10,6 +10,7 @@ import Foundation
 
 class DateManager{
     
+    /// Returns a date to string format "Month DD, year" example "October 31, 2019"
     func formatDateIntoString(_ date: Date) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")

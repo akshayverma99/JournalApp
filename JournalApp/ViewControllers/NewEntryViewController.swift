@@ -78,13 +78,27 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
         present(modalView, animated: true, completion: nil)
     }
     
+    func presentLocationModal(){
+        let modalView = UIAlertController(title: "Location Unavailable", message: "Unable to locate your city", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        modalView.addAction(okButton)
+        present(modalView, animated: true, completion: nil)
+    }
+    
+    func presentRetry(){
+        let modalView = UIAlertController(title: "Save Failed", message: "Unable to save your entry, please retry", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        modalView.addAction(okButton)
+        present(modalView, animated: true, completion: nil)
+    }
+    
     func updateLocationLabel(string: String){
         locationLabel.isEnabled = false
         locationLabel.setTitle(string, for: .disabled)
         self.locationString = string
     }
     
-    func noLocation(){
+    func disableLocation(){
         locationLabel.isEnabled = false
         locationLabel.setTitle("Location Services Disabled", for: .disabled)
     }
@@ -92,30 +106,41 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         CLGeocoder().reverseGeocodeLocation(locations[0]){ placemark, error in
-            // FIXME: Add error handling
             if error != nil{
-                self.noLocation()
+                self.presentLocationModal()
+                self.disableLocation()
             }
             
             if let placemark = placemark, let city = placemark.first?.locality, let country = placemark.first?.country{
                 let newString = "\(city), \(country)"
                 self.updateLocationLabel(string: newString)
             }else{
-                self.noLocation()
+                self.disableLocation()
             }
         }
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        disableLocation()
+        presentLocationModal()
+    }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         if !textField.text.isEmpty{
             let newEntry = JournalEntry(date: currentDate, text: textField.text, location: locationString)
             if editingModeEnabled{
-                JournalEntryManager.updateJournalEntry(at: index!, with: newEntry)
+                do{
+                    try JournalEntryManager.updateJournalEntry(at: index!, with: newEntry)
+                }catch{
+                    presentRetry()
+                }
             }else{
-                JournalEntryManager.addJournalEntry(newEntry)
+                do{
+                    try JournalEntryManager.addJournalEntry(newEntry)
+                }catch{
+                    presentRetry()
+                }
             }
             LocationManager.shared.stopUpdatingLocation()
             previousView.tableView.reloadData()
@@ -131,12 +156,8 @@ class NewEntryViewController: UIViewController, CLLocationManagerDelegate {
             LocationManager.shared.delegate = self
             LocationManager.shared.startUpdatingLocation()
         }else{
-            noLocation()
+            disableLocation()
         }
     }
-    
-
-    
-    
-    
+  
 }

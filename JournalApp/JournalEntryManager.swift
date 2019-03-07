@@ -30,15 +30,15 @@ public class JournalEntryManager{
     // Both hold the same information, the above is used to interface, the bottom is used for modification
     private static var journalEntries: [JournalEntry] = []
     private static var journalEntryObjects: [NSManagedObject] = []
-   
-    static func addJournalEntry(_ entry: JournalEntry){
-        saveJournalEntry(for: entry)
+    
+    static func addJournalEntry(_ entry: JournalEntry)throws{
+        try saveJournalEntry(for: entry)
     }
     
-    static func updateJournalEntry(at index: Int, with entry: JournalEntry){
+    static func updateJournalEntry(at index: Int, with entry: JournalEntry)throws{
         journalEntries[index] = entry
         removeJournalEntry(at: index)
-        addJournalEntry(entry)
+        try addJournalEntry(entry)
     }
     
     static func removeJournalEntry(at index: Int){
@@ -51,7 +51,7 @@ public class JournalEntryManager{
         
         managedContext.delete(entry)
         do{
-           try managedContext.save()
+            try managedContext.save()
         }catch{}
     }
     
@@ -72,8 +72,9 @@ public class JournalEntryManager{
                 let newEntry = try createJournalEntry(from: managedObject)
                 journalEntries.append(newEntry)
             }
-        }catch let error{
-            print(error)
+        }catch{
+            journalEntries = []
+            journalEntryObjects = []
         }
         
     }
@@ -95,7 +96,7 @@ public class JournalEntryManager{
         
     }
     
-    private static func saveJournalEntry(for journalEntry: JournalEntry){
+    private static func saveJournalEntry(for journalEntry: JournalEntry) throws {
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         let managedContext = appdelegate.persistentContainer.viewContext
@@ -104,14 +105,12 @@ public class JournalEntryManager{
         
         setEntryAttributes(for: entry, date: journalEntry.date, text: journalEntry.text, location: journalEntry.location)
         
-        do{
-            try managedContext.save()
-            JournalEntryManager.journalEntries.append(journalEntry)
-            JournalEntryManager.journalEntryObjects.append(entry)
-        }catch let error{
-            print(error.localizedDescription)
-        }
- 
+        
+        try managedContext.save()
+        JournalEntryManager.journalEntries.append(journalEntry)
+        JournalEntryManager.journalEntryObjects.append(entry)
+        
+        
     }
     
     private static func setEntryAttributes(for entry: NSManagedObject, date: Date, text: String, location: String?){
@@ -120,7 +119,7 @@ public class JournalEntryManager{
         guard let location = location else {return}
         entry .setValue(location, forKey: entryAttributeKey.location.rawValue)
     }
-
+    
     
 }
 
